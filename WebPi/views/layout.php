@@ -283,6 +283,9 @@
                         <li>
                             <a href='?controller=evenement&action=index'><i class="fa fa-edit fa-fw"></i> Evenement</a>
                         </li>
+						<li>
+                            <a href='?controller=couleur&action=index'><i class="fa fa-edit fa-fw"></i> Couleur</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
