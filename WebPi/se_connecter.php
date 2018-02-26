@@ -7,14 +7,14 @@ $pwd = $_POST['password'];
 $req = $db->query("SELECT * FROM user WHERE email like '%$email%'");
 $user=$req->fetch();
 if ($user['email']==NULL){
-    echo('email');
+     header('Location: http://localhost/webpi/login.html');
 }
 else if ($user['email']==$email && $pwd == $user['pwd']) {
      $_SESSION['loggeduser'] = $user['id'];
-     echo "pwd1";
+     header('Location: http://localhost/webpi/accueil.php');
 }
 else {
-    	echo "pwd";
+    	 header('Location: http://localhost/webpi/login.html');
 }
 
 ?>
