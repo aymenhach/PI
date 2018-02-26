@@ -1,3 +1,3 @@
 <?php
-  header('Location: http://localhost/webpi/login.html');
+  header('Location: login.html');
 ?>
