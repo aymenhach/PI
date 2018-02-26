@@ -21,12 +21,12 @@
     }
 	 public function modifier() {
 		 if (!isset($_GET['id'])) {
-		
+
 			 return call('pages', 'error');
 		 }
-		 
-		 
-		 
+
+
+
 	 $evenement= new evenement($_GET['id'],'','','','0','','','');
 	 if(!empty($_POST['date_ev']))
 		 $evenement->date_ev=$_POST['date_ev'];
@@ -55,7 +55,7 @@
  require_once('views/evenement/Ajout.php');
  }
  public function ajouter() {
-$evenement= new evenement('0',$_POST['date_ev'],$_POST['hum'],$_POST['temp'],$_POST['etat_parking'],$_POST['etat_queue'],$_POST['equipeone'],$_POST['equipetwo']);
+$evenement= new evenement('0',$_POST['hum'],$_POST['equipeone'],$_POST['temp'],$_POST['etat_parking'],$_POST['etat_queue'],$_POST['equipetwo'],$_POST['date_ev']);
 $evenement->add();
 $evenements = evenement::all();
       require_once('views/evenement/index.php');

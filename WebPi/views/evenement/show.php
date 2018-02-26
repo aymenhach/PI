@@ -1,69 +1,42 @@
 <?php $image="false"; ?>
 <script type="text/javascript" language="javascript"  >
 var k=0;
-function changename() {
-document.getElementById("date_ev").innerHTML='<input  class="form-control" placeholder="date_ev" name="nomevenement" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulernom();testbutton()">Annuler</a>';
+function changedate_ev() {
+document.getElementById("date_ev").innerHTML='<input  class="form-control" placeholder="date_ev" name="date_ev" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulernom();testbutton()">Annuler</a>';
 
 k++;
 }
-function changeprice() {
+function changetemp() {
 document.getElementById("temp").innerHTML='<input type="text" step="0.1" class="form-control" placeholder="temp" name="temp" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulerprice();testbutton()">Annuler</a>';
 
 k++;
 }
 
-function changeref() {
-document.getElementById("ref").innerHTML='<input class="form-control" placeholder="Entrer la nouvelle reference du evenement" name="refevenement" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulerref();testbutton()">Annuler</a>';
+function changehum() {
+document.getElementById("hum").innerHTML='<input class="form-control" placeholder="" name="hum" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulerhum();testbutton()">Annuler</a>';
 
 k++
 }
-function changecatg() {
-document.getElementById("catg").innerHTML='<input class="form-control" placeholder="Entrer la nouvelle categorie du evenement" name="catgevenement" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulercatg();testbutton()">Annuler</a>';
+function changeetat_parking() {
+document.getElementById("etat_parking").innerHTML='<input class="form-control" placeholder="" name="etat_parking" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annuleretat_parking();testbutton()">Annuler</a>';
 
 k++;
 }
-function changedesc() {
-document.getElementById("desc").innerHTML='<input class="form-control" placeholder="Entrer la nouvelle description du evenement" name="descevenement" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulerdesc();testbutton()">Annuler</a>';
+function changeetat_queue() {
+document.getElementById("etat_queue").innerHTML='<input class="form-control" placeholder=" etat_queueription du " name="etat_queue" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annuleretat_queue();testbutton()">Annuler</a>';
 
 k++;
 }
-function changeimg() {
-document.getElementById("img").innerHTML='<input type="file" name="photo"  class="form-control"  id="photo"/>&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annulerimg();testbutton()">Annuler</a>';
-<?php $image="true"; ?>
+function changeequipeone() {
+document.getElementById("equipeone").innerHTML='<input class="form-control" placeholder=" etat_queueription du " name="equipeone" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annuleretat_queue();testbutton()">Annuler</a>';
 k++;
 }
-function annulernom() {
-	document.getElementById("nom").innerHTML='<label >Nom du evenement : <?php echo $evenement->nom;?> </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changename();testbutton()">Modifier</a>';
-	
-	k--;
-}
-function annulerimg() {
-	document.getElementById("img").innerHTML='<label>Image du evenement :<img  src="../../workspace/<?php echo $evenement->image;?>" height="200" width="200" id="imageevenement"  /></label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changeimg();testbutton()">Modifier</a>' ;
-	<?php $image="false"; ?>
-	k--;
-}
-function annulerdesc() {
-	document.getElementById("desc").innerHTML='  <label>Description du evenement : <?php echo $evenement->description;?>  </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changedesc();testbutton()">Modifier</a>';
-	
-	k--;
-}
-function annulerprice() {
-	document.getElementById("price").innerHTML='<label>Prix du evenement : <?php echo $evenement->prix;?> TND </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changeprice();testbutton()">Modifier</a>';
-
-	k--;
-}
-function annulerref() {
-	document.getElementById("ref").innerHTML='<label >Reference du evenement : <?php echo $evenement->reference;?> </label> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="changeref();testbutton()">Modifier</a>';
-	
-	k--;
-}
-function annulercatg() {
-	document.getElementById("catg").innerHTML='<label >categorie du evenement : <?php echo $evenement->categorie;?> </label> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="changecatg();testbutton()">Modifier</a>';
-	
-	k--;
+function changeequipetwo() {
+document.getElementById("equipetwo").innerHTML='<input class="form-control" placeholder=" etat_queueription du " name="equipetwo" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="annuleretat_queue();testbutton()">Annuler</a>';
+k++;
 }
 function showbutton() {
-document.getElementById("button").innerHTML='<button type="submit"  class="btn btn-default" >Submit Button</button> <button type="reset" class="btn btn-default">Reset Button</button>';	
+document.getElementById("button").innerHTML='<button type="submit"  class="btn btn-default" >Submit Button</button> <button type="reset" class="btn btn-default">Reset Button</button>';
 }
 function hidebutton() {
 	document.getElementById("button").innerHTML='';
@@ -73,7 +46,7 @@ function testbutton(){
 		hidebutton();
 	}else {
 		showbutton();
-	
+
 	}
 }
 
@@ -87,39 +60,43 @@ function testbutton(){
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action='?controller=evenement&action=modifier&id=<?php echo $evenement->id ?>'  method="post" enctype="multipart/form-data">     
+                                    <form role="form" action='?controller=evenement&action=modifier&id=<?php echo $evenement->id ?>'  method="post" enctype="multipart/form-data">
 <div class="form-group" >
                                             <label >id du evenement : <?php echo $evenement->id;?> </label>
-                                           
-                                        </div> 									
+
+                                        </div>
                                         <div class="form-group" id="date_ev">
-                                            <label >Date : <?php echo $evenement->date_ev;?> </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changename();testbutton()">Modifier</a>
-                                           
-                                        </div>                              
+                                            <label >Date : <?php echo $evenement->date_ev;?> </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changedate_ev();testbutton()">Modifier</a>
+
+                                        </div>
                                         <div class="form-group" id="hum">
-                                            <label >humidite : <?php echo $evenement->hum;?> </label> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="changeref();testbutton()">Modifier</a>
-                                           
+                                            <label >humidite : <?php echo $evenement->hum;?> </label> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#" onclick="changehum();testbutton()">Modifier</a>
+
                                         </div>
 										<div class="form-group" id="temp">
-                                            <label >temperature : <?php echo $evenement->temp;?> </label> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#?" onclick="changecatg();testbutton()">Modifier</a>
-                                           
+                                            <label >temperature : <?php echo $evenement->temp;?> </label> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#?" onclick="changetemp();testbutton()">Modifier</a>
+
                                         </div>
 										<div class="form-group" id="etat_parking">
-                                            <label>etat parking : <?php  echo $evenement->etat_parking;?> </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changeprice();testbutton()">Modifier</a>
-                                           
+                                            <label>etat parking : <?php  echo $evenement->etat_parking;?> </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changeetat_parking();testbutton()">Modifier</a>
+
                                         </div>
+																				<div class="form-group" id="etat_queue">
+										                                            <label>etat parking : <?php  echo $evenement->etat_queue;?> </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="changeetat_queue();testbutton()">Modifier</a>
+
+										                                        </div>
                                         <div class="form-group" id="equipeone">
-                                            <label>equipeone : <?php echo $evenement->equipeone;?>  </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick='changedesc();testbutton()'>Modifier</a>
-                                           
+                                            <label>equipeone : <?php echo $evenement->equipeone;?>  </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick='changeequipeone();testbutton()'>Modifier</a>
+
                                         </div>
                                         <div class="form-group" id="equipetwo">
-                                            <label>equipetwo : <?php echo $evenement->equipetwo;?>  </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick='changedesc();testbutton()'>Modifier</a>
-                                           
+                                            <label>equipetwo : <?php echo $evenement->equipetwo;?>  </label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick='changeequipetwo();testbutton()'>Modifier</a>
+
                                         </div>
 
                                         <br><br>
                                          <div class="form-group" id="button">
-                                        
+
 										</div>
                                     </form>
                                     <div align="right">

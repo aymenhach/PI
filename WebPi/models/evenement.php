@@ -13,13 +13,13 @@
 
     public function __construct($id,$hum,$equipeone, $temp, $etat_parking, $etat_queue,$equipetwo,$date_ev) {
       $this->id=$id;
-	  $this->date_ev = $date_ev;
       $this->hum  = $hum;
+      $this->equipeone = $equipeone;
+	    $this->date_ev = $date_ev;
       $this->temp = $temp;
-	  $this->etat_parking  = $etat_parking;
+	    $this->etat_parking  = $etat_parking;
       $this->etat_queue = $etat_queue;
-	  $this->equipeone = $equipeone;
-	  $this->equipetwo = $equipetwo;
+	    $this->equipetwo = $equipetwo;
     }
 
     public static function all() {
@@ -38,13 +38,13 @@
 
     public static function find($id) {
       $db = Db::getInstance();
-	  
+
       // we make sure $id_evis an integer
       $id_ev= intval($id);
-	  
+
       $req = $db->query('SELECT * FROM evenement WHERE id_ev='.$id);
       // the query was prepared, now we replace :id_evwith our actual $id_evvalue
-      
+
       $evenement = $req->fetch();
 
       return new evenement($evenement['id_ev'], $evenement['hum'], $evenement['equipeone'], $evenement['temp'], $evenement['etat_parking'], $evenement['etat_queue'], $evenement['equipetwo'],$evenement['date_ev']);
@@ -57,7 +57,12 @@ SET hum = '".$this->hum."'
 WHERE id_ev= '".$this->id."';";
 $db->query($sql);
 }
-
+if(!empty($this->temp)) {
+	$sql ="UPDATE evenement
+SET temp = '".$this->temp."'
+WHERE id_ev= '".$this->id."';";
+$db->query($sql);
+}
 if(!empty($this->equipeone)) {
 	$sql ="UPDATE evenement
 SET equipeone = '".$this->equipeone."'
@@ -84,9 +89,14 @@ SET etat_queue = '".$this->etat_queue."'
 WHERE id_ev= '".$this->id."';";
 $db->query($sql);
 }
-	  
-      
-      
+if(!empty($this->etat_queue)) {
+	$sql ="UPDATE evenement
+SET etat_parking = '".$this->etat_parking."'
+WHERE id_ev= '".$this->id."';";
+$db->query($sql);
+}
+
+
     }
     public static  function delete($id) {
         $db = Db::getInstance();
